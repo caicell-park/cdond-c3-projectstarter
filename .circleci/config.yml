@@ -79,6 +79,8 @@ jobs:
       # Do unit test
       - run:
           name: Run unit test
+          environment:
+            NODE_OPTIONS: --max_old_space_size=8192
           command: |
             cd frontend
             npm run test

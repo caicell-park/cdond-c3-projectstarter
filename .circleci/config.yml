@@ -72,26 +72,32 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       # Checkout code from git
+      - checkout
       # Restore from cache
-      # Your job code here
+      - restore_cache:
+          keys: [frontend-build]
+      # Do unit test
       - run:
-          name: Not Implemented Yet
+          name: Run unit test
           command: |
-            # Your code here
-            exit 1
+            cd frontend
+            npm run test
 
   test-backend:
     docker:
       - image: circleci/node:13.8.0
     steps:
       # Checkout code from git
+      - checkout
       # Restore from cache
-      # Your job code here
+      - restore_cache:
+          keys: [backend-build]
+      # Do unit test
       - run:
-          name: Not Implemented Yet
+          name: Run unit test
           command: |
-            # Your code here
-            exit 1
+            cd backend
+            npm run test
 
   scan-frontend:
     docker:
